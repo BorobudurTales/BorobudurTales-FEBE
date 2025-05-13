@@ -1,3 +1,22 @@
+# 📘 TUTORIAL CLONE PROJECT DARI GITHUB
+
+Berikut adalah langkah-langkah untuk meng-clone dan menjalankan proyek Laravel ini:
+
+---
+
+### 1. 📋 Salin Link Repository
+
+Buka halaman GitHub repository, lalu klik tombol **Code** dan salin URL-nya.
+
+![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/1.png)
+
+---
+
+### 2. 🧪 Clone Repository ke Komputer
+
+Buka terminal, lalu jalankan perintah berikut:
+
+
 TUTORIAL CLONE GITHUB
 
 1. Copy Link projek
