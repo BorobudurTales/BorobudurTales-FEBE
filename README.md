@@ -1,7 +1,7 @@
 TUTORIAL CLONE GITHUB
 
 1. Copy Link projek
-   https://github.com/Mayaputri04/capstone/public/img/readme/1.png
+    <img src="https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/1.png" >
 3. Paste di terminal dengan perintah *git clone {nama link}*
 4. buka project di visual studio code
 5. buka terminal dan lakukan perintah *npm install*
