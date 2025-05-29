@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuccesRegistrasiController;
 use App\Http\Controllers\UploadController;
@@ -7,8 +8,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
 Route::get('/beranda', function () {
     return view('users/beranda');
@@ -22,11 +23,16 @@ Route::patch('/verify-success', [SuccesRegistrasiController::class, 'index'])->n
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/library', [LibraryController::class, 'index'])->name('library');
+    
+    Route::get('/explore', function () {
+        return view('explore');
+    })->name('explore');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/upload-gambar', [UploadController::class, 'index'])->name('upload.gambar');
+Route::get('/upload-gambar', [UploadController::class, 'index'])->name('upload');
 
 require __DIR__ . '/auth.php';
