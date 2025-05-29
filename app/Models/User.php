@@ -2,12 +2,20 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 use Illuminate\Contracts\Auth\MustVerifyEmail; // ← Aktifkan baris ini
+=======
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+>>>>>>> origin/main
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+<<<<<<< HEAD
 class User extends Authenticatable implements MustVerifyEmail // ← Tambahkan implementasi
+=======
+class User extends Authenticatable
+>>>>>>> origin/main
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -18,9 +26,13 @@ class User extends Authenticatable implements MustVerifyEmail // ← Tambahkan i
      * @var list<string>
      */
     protected $fillable = [
+<<<<<<< HEAD
         'username',
         'first_name',
         'last_name',
+=======
+        'name',
+>>>>>>> origin/main
         'email',
         'password',
     ];

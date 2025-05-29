@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -274,4 +275,15 @@
             <div class="h-14.5 hidden lg:block"></div>
         @endif
     </body>
+=======
+<!-- resources/views/welcome.blade.php -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Placeholder</h1>
+</body>
+>>>>>>> origin/main
 </html>
