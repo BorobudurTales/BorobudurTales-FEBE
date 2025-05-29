@@ -1,10 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuccesRegistrasiController;
+use App\Http\Controllers\UploadController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/beranda', function () {
+    return view('users/beranda');
 });
 
 Route::get('/dashboard', function () {
@@ -20,6 +27,7 @@ Route::get('/explore', function () {
 Route::get('/library_detail', function () {
     return view('pages.library_detail');
 })->name('library_detail');
+Route::patch('/verify-success', [SuccesRegistrasiController::class, 'index'])->name('success.verify');
 
 
 Route::middleware('auth')->group(function () {
@@ -28,4 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/upload-gambar', [UploadController::class, 'index'])->name('upload.gambar');
+
+require __DIR__ . '/auth.php';

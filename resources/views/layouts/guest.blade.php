@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-white font-sans text-gray-900 antialiased">
+    <!-- Fullscreen without margin -->
+    <div class="min-h-screen py-8 flex flex-col lg:flex-row">
+
+        <!-- Form Section - Left -->
+        <div class="w-full flex items-center justify-center">
+            {{ $slot }}
         </div>
-    </body>
+
+        <!-- Branding Section - Right -->
+        @if (Route::is('login') || Route::is('register'))
+            <div class="hidden lg:flex w-full bg-white items-center justify-center flex-col">
+                <img src="{{ asset('images/logo-3.svg') }}" alt="Logo"
+                    class="max-w-full w-48 lg:w-80 h-auto mb-1" />
+                <h2 class="text-4xl lg:text-5xl font-bold text-yellow-600">BOROBUDUR</h2>
+                <p class="text-2xl lg:text-3xl text-gray-400 tracking-widest mt-1">TALES</p>
+            </div>
+        @endif
+
+    </div>
+</body>
+
 </html>
