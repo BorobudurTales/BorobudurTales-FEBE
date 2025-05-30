@@ -19,6 +19,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Halaman explore
+Route::get('/explore', function () {
+    return view('pages.explore');
+})->name('explore');
+
+// Halaman library
+Route::get('/library_detail', function () {
+    return view('pages.library_detail');
+})->name('library_detail');
 Route::patch('/verify-success', [SuccesRegistrasiController::class, 'index'])->name('success.verify');
 
 
