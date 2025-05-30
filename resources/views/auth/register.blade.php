@@ -1,48 +1,48 @@
 <x-guest-layout>
     <div class="w-[500px] bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-        <h2 class="text-2xl font-bold text-yellow-600 text-center mb-6">Buat Akun Baru</h2>
+        <h2 class="mb-6 text-2xl font-bold text-center text-yellow-600">Buat Akun Baru</h2>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Username -->
             <div class="mb-4">
-                <x-input-label for="username" :value="__('Username')" />
-                <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')"
+                <x-auth.input-label for="username" :value="__('Username')" />
+                <x-auth.text-input id="username" placeholder="Masukan Username" class="block w-full mt-1 text-sm {{ $errors->has('username') ? 'border-red-500' : 'border-gray-300' }}" type="text" name="username" :value="old('username')"
                     autofocus />
-                <x-input-error :messages="$errors->get('username')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('username')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <!-- Nama Depan -->
             <div class="mb-4">
-                <x-input-label for="first_name" :value="__('Nama Depan')" />
-                <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
+                <x-auth.input-label for="first_name" :value="__('Nama Depan')" />
+                <x-auth.text-input id="first_name" placeholder="Masukan Nama Depan" class="block w-full mt-1 text-sm {{ $errors->has('first_name') ? 'border-red-500' : 'border-gray-300' }}" type="text" name="first_name"
                     :value="old('first_name')" autofocus />
-                <x-input-error :messages="$errors->get('first_name')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('first_name')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <!-- Nama Belakang -->
             <div class="mb-4">
-                <x-input-label for="last_name" :value="__('Nama Belakang')" />
-                <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
+                <x-auth.input-label for="last_name" :value="__('Nama Belakang')" />
+                <x-auth.text-input id="last_name" placeholder="Masukan Nama Belakang" class="block w-full mt-1 text-sm {{ $errors->has('last_name') ? 'border-red-500' : 'border-gray-300' }}" type="text" name="last_name"
                     :value="old('last_name')" />
-                <x-input-error :messages="$errors->get('last_name')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('last_name')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <!-- Email -->
             <div class="mb-4">
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                <x-auth.input-label for="email" :value="__('Email')" />
+                <x-auth.text-input id="email" placeholder="Masukan Email" class="block w-full mt-1 text-sm {{ $errors->has('email') ? 'border-red-500' : 'border-gray-300' }}" type="email" name="email"
                     :value="old('email')" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <!-- Kata Sandi -->
             <div class="mb-4">
-                <x-input-label for="password" :value="__('Kata Sandi')" />
+                <x-auth.input-label for="password" :value="__('Kata Sandi')" />
                 <div class="relative">
-                    <x-text-input id="password" class="block mt-1 w-full pr-10" type="password" name="password" />
+                    <x-auth.text-input id="password"  placeholder="Masukan Kata Sandi"  class="block text-sm w-full pr-10 mt-1 {{ $errors->has('password') ? 'border-red-500' : 'border-gray-300' }}" type="password" name="password" />
                     <button type="button" onclick="togglePassword('password', this)"
-                        class="absolute right-3 top-3 text-gray-500 hover:text-yellow-600">
+                        class="absolute text-gray-500 right-3 top-3 hover:text-yellow-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,17 +52,17 @@
                         </svg>
                     </button>
                 </div>
-                <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <!-- Konfirmasi Kata Sandi -->
             <div class="mb-4">
-                <x-input-label for="password_confirmation" :value="__('Konfirmasi Kata Sandi')" />
+                <x-auth.input-label for="password_confirmation" :value="__('Konfirmasi Kata Sandi')" />
                 <div class="relative">
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full pr-10" type="password"
+                    <x-auth.text-input id="password_confirmation"  placeholder="Masukan Konfirmasi Kata Sandi"  class="block text-sm w-full pr-10 mt-1 {{ $errors->has('password_confirmation') ? 'border-red-500' : 'border-gray-300' }}" type="password"
                         name="password_confirmation" />
                     <button type="button" onclick="togglePassword('password_confirmation', this)"
-                        class="absolute right-3 top-3 text-gray-500 hover:text-yellow-600">
+                        class="absolute text-gray-500 right-3 top-3 hover:text-yellow-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,22 +72,22 @@
                         </svg>
                     </button>
                 </div>
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-600 text-sm" />
+                <x-auth.input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
             </div>
 
 
 
             <!-- Link ke Login -->
-            <div class="text-sm text-center mb-4">
+            <div class="mb-4 text-sm text-center">
                 <span class="text-gray-500">Punya akun? </span>
-                <a href="{{ route('login') }}" class="text-yellow-600 hover:underline font-semibold">Masuk</a>
+                <a href="{{ route('login') }}" class="font-semibold text-yellow-600 hover:underline">Masuk</a>
             </div>
 
             <!-- Tombol Daftar -->
-            <x-primary-button
-                class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 rounded-md flex justify-center items-center">
+            <x-auth.primary-button
+                class="flex items-center justify-center w-full px-4 py-3 font-bold text-white bg-yellow-600 rounded-md hover:bg-yellow-700">
                 {{ __('Daftar') }}
-            </x-primary-button>
+            </x-auth.primary-button>
 
         </form>
     </div>
