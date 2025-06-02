@@ -13,33 +13,33 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-white font-sans text-gray-900 antialiased">
+<body class="font-sans antialiased text-gray-900 bg-white">
 
-    <div class="min-h-screen flex flex-col lg:flex-row">
-        <div class="w-full lg:w-1/2 flex items-center justify-center p-6 bg-white">
+    <div class="flex flex-col min-h-screen lg:flex-row">
+        <div class="flex items-center justify-center w-full p-6 bg-white lg:w-1/2">
             <img src="{{ asset('images/Forgot password-pana 1.svg') }}" 
                  alt="Forgot Password Illustration" 
-                 class="w-full max-w-md h-auto">
+                 class="w-full h-auto max-w-md">
         </div>
 
-        <div class="w-full lg:w-1/2 flex items-center justify-center p-6">
-            <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-                <h2 class="text-2xl lg:text-3xl font-bold text-yellow-700 mb-4 text-center">Lupa Kata Sandi</h2>
-                <p class="text-center text-gray-600 mb-6 text-sm">
+        <div class="flex items-center justify-center w-full p-6 lg:w-1/2">
+            <div class="w-full max-w-md p-8 bg-white shadow-lg rounded-xl">
+                <h2 class="mb-4 text-2xl font-bold text-center text-yellow-700 lg:text-3xl">Lupa Kata Sandi</h2>
+                <p class="mb-6 text-sm text-center text-gray-600">
                     Masukkan alamat email yang Anda gunakan untuk mendaftar. Kami akan mengirimkan instruksi untuk mengatur ulang kata sandi Anda.
                 </p>
-                <x-auth-session-status class="mb-4" :status="session('status')"/>
+                <x-auth.auth-session-status class="mb-4" :status="session('status')"/>
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div class="mb-4">
                         <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                         <input type="email" id="email" name="email" required
-                            class="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" />
+                            class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500" />
                     </div>
 
                     <div class="flex justify-center">
                         <button type="submit"
-                            class="bg-yellow-700 hover:bg-yellow-800 text-white font-semibold px-6 py-2 rounded-md shadow">
+                            class="px-6 py-2 font-semibold text-white bg-yellow-700 rounded-md shadow hover:bg-yellow-800">
                             Kirim
                         </button>
                     </div>

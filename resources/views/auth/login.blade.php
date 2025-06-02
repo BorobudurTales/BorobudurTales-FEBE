@@ -1,28 +1,28 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-white">
+    <div class="flex items-center justify-center min-h-screen bg-white">
         <div class="w-[480px] bg-white rounded-xl p-8 border border-gray-200 shadow-md">
             <h1 class="text-2xl font-bold text-[#C98300] mb-6 text-center">Masuk ke Akun Anda</h1>
 
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+            <x-auth.auth-session-status class="mb-4" :status="session('status')" />
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <div class="mb-4">
-                    <x-input-label for="email" :value="__('Email')" class="text-gray-700" />
-                    <x-text-input id="email" name="email" type="email" :value="old('email')" required autofocus autocomplete="username"
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
+                    <x-auth.input-label for="email" :value="__('Email')" class="text-gray-700" />
+                    <x-auth.text-input id="email" name="email" type="email" :value="old('email')" required autofocus autocomplete="username"
+                        class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                    <x-auth.input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
                 </div>
 
                 <div class="mb-4">
-                    <x-input-label for="password" :value="__('Kata Sandi')" class="text-gray-700" />
+                    <x-auth.input-label for="password" :value="__('Kata Sandi')" class="text-gray-700" />
                     <div class="relative">
-                        <x-text-input id="password" name="password" type="password" required
-                            class="mt-1 block w-full pr-10 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <x-auth.text-input id="password" name="password" type="password" required
+                            class="block w-full pr-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                         <button type="button" onclick="togglePassword('password', this)"
                             class="absolute right-3 top-3 text-gray-500 hover:text-[#C98300]">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke="currentColor" fill="none">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -30,7 +30,7 @@
                             </svg>
                         </button>
                     </div>
-                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
+                    <x-auth.input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
                 </div>
 
                 <div class="flex justify-end mb-4 text-sm">
@@ -46,7 +46,7 @@
                     </button>
                 </div>
                 
-                <div class="mt-4 text-center text-sm text-gray-600">
+                <div class="mt-4 text-sm text-center text-gray-600">
                     Belum punya akun?
                     <a href="{{ route('register') }}" class="text-[#C98300] font-semibold hover:underline">Daftar</a>
                 </div>
