@@ -3,14 +3,18 @@
         <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center font-['Inter']">Pustaka Relief</h1>
 
         {{-- Search and Filter --}}
-        <div class="flex flex-col gap-4 md:flex-col md:items-start mb-6 font-['Inter']">
-            <form method="GET" action="{{ route('library') }}" class="w-full md:w-[400px]">
+        <div class="flex justify-center mb-6 font-['Inter']">
+            <form method="GET" action="{{ route('library') }}" class="flex w-full max-w-md gap-2">
                 <input type="text" name="search" value="{{ request('search') }}"
-                    class="w-full text-sm border-gray-300 rounded-lg shadow-sm focus:border-orange-400 focus:ring-orange-200 focus:ring focus:ring-opacity-50"
+                    class="flex-1 px-4 py-2 text-sm border border-gray-300 rounded-lg shadow-sm focus:border-orange-400 focus:ring-orange-200 focus:ring focus:ring-opacity-50"
                     placeholder="Temukan kisah...">
+                <button type="submit"
+                    class="px-4 py-2 text-sm font-semibold text-white transition-all rounded-lg bg-amber-500 hover:bg-amber-600">
+                    Cari
+                </button>
             </form>
 
-            <div class="flex flex-wrap gap-6 mt-2 text-sm font-medium">
+            {{-- <div class="flex flex-wrap gap-6 mt-2 text-sm font-medium"> --}}
                 {{-- @foreach (['recent' => 'Recent', 'popular' => 'Popular', 'viewed' => 'Most Viewed'] as $key => $label)
                     <a href="{{ route('library', ['filter' => $key]) }}"
                         class="{{ request('filter', 'recent') === $key
@@ -19,7 +23,7 @@
                         {{ $label }}
                     </a>
                 @endforeach --}}
-            </div>
+            {{-- </div> --}}
         </div>
 
         {{-- Story Grid --}}

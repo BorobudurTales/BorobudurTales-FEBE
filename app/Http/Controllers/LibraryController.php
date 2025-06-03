@@ -10,8 +10,13 @@ class LibraryController extends Controller
 {
     public function index(Request $request)
     {
-        $ceritas = Cerita::with('images')->paginate(6);
+        $query = Cerita::with('images');
 
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where('tema', 'like', '%' . $searchTerm . '%');
+        }
+        $ceritas = $query->paginate(6);
         return view('users.pustaka', compact('ceritas'));
     }
 
