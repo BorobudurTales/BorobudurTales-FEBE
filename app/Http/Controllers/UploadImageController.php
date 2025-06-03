@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class UploadImageController extends Controller
@@ -12,7 +15,7 @@ class UploadImageController extends Controller
      */
     public function index()
     {
-        return view('auth.upload'); // Tombol pilih metode
+        return view('users.upload'); // Tombol pilih metode
     }
 
     /**
@@ -20,7 +23,7 @@ class UploadImageController extends Controller
      */
     public function uploadImage()
     {
-        return view('auth.upload-image'); // Form unggah gambar
+        return view('users.upload-image'); // Form unggah gambar
     }
 
     /**
@@ -28,38 +31,79 @@ class UploadImageController extends Controller
      */
     public function takeImage()
     {
-        return view('auth.take-image'); // Kamera capture
+        return view('users.take-image'); // Kamera capture
     }
 
     /**
      * Proses simpan gambar ke server dan tampilkan hasilnya.
      */
-    public function storeImage(Request $request)
+    public function analyze(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|max:2048'
-        ]);
+        try {
+            // Simpan path final gambar yang diupload
+            $imagePath = null;
+            $imageName = null;
 
-        $path = $request->file('image')->store('uploads', 'public'); // Simpan gambar
+            // Jika upload file dari form
+            if ($request->hasFile('image')) {
+                $request->validate([
+                    'image' => 'required|image|max:2048',
+                ]);
 
-        // Redirect ke halaman hasil (result) dengan membawa path
-        return redirect()->route('upload.result')->with([
-            'image_path' => $path,
-            'success' => 'Gambar berhasil diunggah!',
-            // Tambahkan data hasil analisis di sini jika ada
-            'result' => 'Ini hasil analisis contoh'
-        ]);
-    }
+                $uploadedFile = $request->file('image');
+                $imageName = time() . '_' . Str::random(10) . '.' . $uploadedFile->getClientOriginalExtension();
+                $imagePath = public_path('uploads/' . $imageName);
 
-    /**
-     * Tampilan halaman hasil setelah upload.
-     */
-    public function showResult()
-    {
-        return view('auth.result', [
-            'image_path' => session('image_path'),
-            'success' => session('success'),
-            'result' => session('result')
-        ]);
+                $uploadedFile->move(public_path('uploads'), $imageName);
+            }
+            // Jika input base64 dari kamera
+            elseif ($request->filled('camera_image')) {
+                $base64Data = $request->input('camera_image');
+
+                if (!preg_match('/^data:image\/(\w+);base64,/', $base64Data, $match)) {
+                    return back()->withErrors(['error' => 'Format data base64 tidak valid.']);
+                }
+
+                $imageType = strtolower($match[1]);
+                if (!in_array($imageType, ['jpg', 'jpeg', 'png'])) {
+                    return back()->withErrors(['error' => 'Format gambar tidak didukung.']);
+                }
+
+                $base64Data = substr($base64Data, strpos($base64Data, ',') + 1);
+                $decodedImage = base64_decode($base64Data);
+
+                if ($decodedImage === false) {
+                    return back()->withErrors(['error' => 'Gagal decoding gambar.']);
+                }
+
+                $imageName = time() . '_' . Str::random(10) . '.' . $imageType;
+                $imagePath = public_path('uploads/' . $imageName);
+                file_put_contents($imagePath, $decodedImage);
+            }
+            // Tidak ada input gambar
+            else {
+                return back()->withErrors(['error' => 'Tidak ada gambar ditemukan.']);
+            }
+
+            // Kirim ke API Machine Learning
+            $response = Http::attach(
+                'image',
+                fopen($imagePath, 'r'),
+                $imageName
+            )->post(env('MODEL_AI_URL'));
+
+            if ($response->failed()) {
+                return back()->withErrors(['error' => 'Gagal memproses gambar.']);
+            }
+
+            $resultData = $response->json();
+
+            return view('users.result', [
+                'data' => $resultData,
+                'uploadedImage' => $imageName,
+            ]);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
+        }
     }
 }

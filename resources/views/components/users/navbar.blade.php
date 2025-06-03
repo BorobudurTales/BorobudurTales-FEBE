@@ -80,7 +80,7 @@
         <a href="{{ route('upload') ?? '#' }}" class="block">Unggah Gambar</a>
         <div class="pt-2 mt-2 border-t border-white">
             @auth
-                <a href="{{ route('profile.edit') }}" class="block py-1">{{ Auth::user()->name }}</a>
+                <a href="{{ route('profile.edit') }}" class="block py-1">Profile</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="block py-1">Keluar</button>

@@ -12,15 +12,7 @@ Route::get('/', function () {
 })->name('home');
 
 // Halaman awal untuk memilih metode upload
-Route::get('/upload', [UploadImageController::class, 'index'])->name('upload');
-Route::get('/upload/image', [UploadImageController::class, 'uploadImage'])->name('upload.image');
-Route::get('/upload/camera', [UploadImageController::class, 'takeImage'])->name('upload.camera');
-Route::post('/upload/image', [UploadImageController::class, 'storeImage'])->name('upload.image.store');
 
-// Hapus ResultController dan ganti dengan route ini
-Route::get('/upload/result', [UploadImageController::class, 'showResult'])->name('upload.result');
-
-Route::get('/result', [UploadImageController::class, 'showResult'])->name('result');
 
 Route::get('/verify-success', function () {
     return view('auth.verify-success');
@@ -37,6 +29,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/library', [LibraryController::class, 'index'])->name('library');
     Route::get('/library/{id}', [LibraryController::class, 'show'])->name('library.detail');
+
+    Route::get('/upload', [UploadImageController::class, 'index'])->name('upload');
+    Route::get('/upload/image', [UploadImageController::class, 'uploadImage'])->name('upload.image');
+    Route::post('/upload/image', [UploadImageController::class, 'analyze'])->name('upload.image.analyze');
+    Route::get('/upload/camera', [UploadImageController::class, 'takeImage'])->name('upload.camera');
+    Route::get('/result', [UploadImageController::class, 'showResult'])->name('result');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

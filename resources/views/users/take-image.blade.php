@@ -1,83 +1,54 @@
-<x-guest-layout>
-    @php
-        $activeStep = $activeStep ?? 1;
-        $totalSteps = 5;
-    @endphp
-
-    <div class="w-full max-w-screen-md mx-auto mt-12 mb-12 px-4 md:px-0">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold relative inline-block">
-                <span class="bg-gradient-to-r from-[#384052] via-[#d4b64c] to-[#d4b64c] text-transparent bg-clip-text">
-                    Temukan Kisahmu
-                </span>
-                <span class="block w-32 h-1 bg-[#fff3c4] mx-auto mt-2 rounded"></span>
-            </h2>
-        </div>
-
-        <div id="camera-container"
-            class="border-2 border-dotted border-yellow-400 px-6 py-8 transition-all duration-300">
-            <div id="preview-container" class="text-center hidden mb-6">
-                <img id="preview" class="w-full max-w-md max-h-96 rounded-xl object-contain mx-auto" alt="Preview">
-                <div>
-                    <button type="button" id="remove-btn"
-                        class="text-red-500 hover:text-red-700 text-xl font-bold">&times;</button>
-
-                </div>
+<x-app-layout>
+    <div class="w-full px-4 py-12 mx-auto mt-12 md:px-6">
+        <x-users.header />
+        @if ($errors->any())
+            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 border border-red-300 rounded-lg">
+                <ul class="pl-5 space-y-1 list-disc">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
+        @endif
+        <div class="max-w-screen-lg p-6 mx-auto bg-white border shadow-lg rounded-xl">
+            <div id="camera-container"
+                class="px-6 py-8 transition-all duration-300 border-2 border-gray-300 border-dashed rounded-lg">
+                <div id="preview-container" class="hidden mb-6 text-center">
+                    <img id="preview" class="object-contain w-full max-w-md mx-auto max-h-96 rounded-xl" alt="Preview">
+                    <div>
+                        <button type="button" id="remove-btn"
+                            class="text-xl font-bold text-red-500 hover:text-red-700">&times;</button>
 
-            <div id="camera-placeholder" class="cursor-pointer" onclick="startCamera()">
-                <div class="flex flex-col items-center text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 7h2l1-2h10l1 2h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 13a3 3 0 100-6 3 3 0 000 6z" />
-                    </svg>
-                    <p class="text-sm font-semibold mt-2">Ambil Gambar</p>
-                    <p class="text-xs text-gray-400 text-center">Silahkan jepret gambar relief yang anda temukan</p>
-                </div>
-            </div>
-
-            <video id="video" autoplay class="rounded-xl max-h-96 w-full object-contain hidden mt-4"></video>
-
-            <canvas id="canvas" class="hidden"></canvas>
-
-            <button id="predict-btn" type="button"
-                class="block w-1/2 mx-auto mt-6 bg-yellow-300 text-white font-semibold py-2 rounded-lg text-center transition cursor-not-allowed pointer-events-none"
-                disabled>
-                Prediksi
-            </button>
-        </div>
-
-        <div class="flex items-center w-full max-w-md justify-between mx-auto mt-10 " id="step-indicator">
-            @for ($i = 1; $i <= $totalSteps; $i++)
-                <div class="flex items-center w-full">
-                    <div id="step-{{ $i }}"
-                        class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm
-                        @if ($i == $activeStep) bg-yellow-400 text-white
-                        @elseif ($i < $activeStep)
-                            bg-yellow-300 text-white
-                        @else
-                            border border-gray-300 text-gray-600 @endif">
-                        {{ $i === $totalSteps ? '✓' : $i }}
                     </div>
-
-                    @if ($i < $totalSteps)
-                        <div
-                            class="flex-grow h-1
-                            @if ($i < $activeStep) bg-yellow-400
-                            @else
-                                bg-gray-300 @endif">
-                        </div>
-                    @endif
                 </div>
-            @endfor
+
+                <div id="camera-placeholder" class="cursor-pointer" onclick="startCamera()">
+                    <div class="flex flex-col items-center text-gray-500">
+                        <img src="{{ asset('img/camera.svg') }}" alt="">
+                        <p class="mt-2 text-sm font-semibold">Ambil Gambar</p>
+                        <p class="text-xs text-center text-gray-400">Silahkan jepret gambar relief yang anda temukan</p>
+                    </div>
+                </div>
+
+                <video id="video" autoplay class="hidden object-contain w-full mt-4 rounded-xl max-h-96"></video>
+
+                <canvas id="canvas" class="hidden"></canvas>
+
+            </div>
+            <div class="mt-4 text-center">
+                <form id="camera-form" method="POST" action="{{ route('upload.image.analyze') }}">
+                    @csrf
+                    <input type="hidden" name="camera_image" id="camera_image">
+                    <button type="button" id="predict-btn"
+                        class="w-1/3 py-2 font-semibold text-white transition duration-200 bg-yellow-600 rounded-md hover:bg-yellow-500">Prediksi</button>
+                </form>
+            </div>
         </div>
     </div>
+    <x-users.step :activeStep="2" :totalSteps="3" />
 
     <script>
-        const totalSteps = 4;
+        const totalSteps = 3;
         let video = null;
         let canvas = null;
         let preview = null;
@@ -88,12 +59,18 @@
             setStep(2);
 
             const predictBtn = document.getElementById('predict-btn');
-
             predictBtn.addEventListener('click', () => {
+                // e.preventDefault();
                 if (cameraActive && !hasCaptured) {
-                    takePicture(); 
+                    //  e.preventDefault();
+                    takePicture();
+                    updatePredictButton(true, 'Prediksi');
                 } else if (hasCaptured) {
-                    setStep(4);
+                    setStep(3);
+                    predictBtn.disabled = true;
+                    predictBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                    predictBtn.textContent = 'Memproses...';
+                    document.getElementById('camera-form').submit();
                 }
             });
 
@@ -171,6 +148,7 @@
             canvas.getContext('2d').drawImage(video, 0, 0);
 
             const imageDataURL = canvas.toDataURL('image/png');
+            document.getElementById('camera_image').value = imageDataURL;
             preview.src = imageDataURL;
             preview.classList.remove('hidden');
             video.classList.add('hidden');
@@ -201,4 +179,4 @@
             predictBtn.innerText = labelText;
         }
     </script>
-</x-guest-layout>
+</x-app-layout>
