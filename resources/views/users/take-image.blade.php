@@ -47,12 +47,11 @@
         </div>
     </div>
     <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-40">
-        <svg class="w-10 h-10 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24">
-            <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2">
-            </circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-        </svg>
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] text-white"
+            role="status">
+            <span
+                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+        </div>
     </div>
     <x-users.step :activeStep="2" :totalSteps="3" />
 
