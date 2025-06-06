@@ -17,13 +17,13 @@ class LibraryController extends Controller
             $query->where('tema', 'like', '%' . $searchTerm . '%');
         }
         $ceritas = $query->paginate(6);
-        return view('users.pustaka', compact('ceritas'));
+        return view('users.pustaka', ['ceritas' => $ceritas, 'title' => 'Pustaka Relief']);
     }
 
     public function show($id)
     {
         $ceritaId = Cerita::with('images')->findOrFail($id);
-        return view('users.pustaka-detail', compact('ceritaId'));
+        return view('users.pustaka-detail', ['ceritaId' => $ceritaId, 'title' => 'Detail Pustaka Relief']);
     }
 
     // public function show(Story $story)

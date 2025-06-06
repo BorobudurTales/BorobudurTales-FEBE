@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="w-full max-w-screen-xl px-4 py-12 mx-auto mt-12 md:px-20">
 
         <div class="p-8 bg-white border shadow-lg rounded-xl">

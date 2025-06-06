@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="w-full px-4 py-12 mx-auto mt-12 md:px-6">
         <x-users.header />
         @if ($errors->any())
@@ -45,6 +46,14 @@
             </div>
         </div>
     </div>
+    <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-40">
+        <svg class="w-10 h-10 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2">
+            </circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+    </div>
     <x-users.step :activeStep="2" :totalSteps="3" />
 
     <script>
@@ -54,6 +63,7 @@
         let preview = null;
         let hasCaptured = false;
         let cameraActive = false;
+        const loadingOverlay = document.getElementById('loading-overlay');
 
         document.addEventListener('DOMContentLoaded', () => {
             setStep(2);
@@ -71,6 +81,7 @@
                     predictBtn.classList.add('opacity-60', 'cursor-not-allowed');
                     predictBtn.textContent = 'Memproses...';
                     document.getElementById('camera-form').submit();
+                    loadingOverlay.classList.remove('hidden');
                 }
             });
 
@@ -125,7 +136,11 @@
             video.classList.remove('hidden');
 
             navigator.mediaDevices.getUserMedia({
-                    video: true
+                    video: {
+                        facingMode: {
+                            exact: "environment"
+                        } // coba akses kamera belakang
+                    }
                 })
                 .then((stream) => {
                     video.srcObject = stream;
@@ -134,9 +149,23 @@
                     updatePredictButton(true, 'Ambil Gambar');
                 })
                 .catch((err) => {
-                    alert("Tidak bisa mengakses kamera: " + err.message);
-                    document.getElementById('camera-placeholder').classList.remove('hidden');
-                    video.classList.add('hidden');
+                    console.warn("Kamera belakang tidak tersedia, coba kamera depan:", err.message);
+                    navigator.mediaDevices.getUserMedia({
+                            video: {
+                                facingMode: "user"
+                            }
+                        })
+                        .then((stream) => {
+                            video.srcObject = stream;
+                            cameraActive = true;
+                            setStep(2);
+                            updatePredictButton(true, 'Ambil Gambar');
+                        })
+                        .catch((fallbackErr) => {
+                            alert("Tidak bisa mengakses kamera: " + fallbackErr.message);
+                            document.getElementById('camera-placeholder').classList.remove('hidden');
+                            video.classList.add('hidden');
+                        });
                 });
         }
 

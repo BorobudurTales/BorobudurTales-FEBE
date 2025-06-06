@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    <x-slot:title>{{ $title }}</x-slot:title>
     <!-- Hero Section -->
     <section class="relative">
         <img src="{{ asset('img/data/' . $ceritaId->images->filename) }}" alt="Relief Candi"

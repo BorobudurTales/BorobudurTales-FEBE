@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center font-['Inter']">Pustaka Relief</h1>
 
@@ -27,7 +28,7 @@
         </div>
 
         {{-- Story Grid --}}
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @forelse ($ceritas as $index)
                 <div
                     class="flex flex-col overflow-hidden transition-shadow duration-300 bg-white border border-gray-200 shadow-md rounded-2xl hover:shadow-xl">

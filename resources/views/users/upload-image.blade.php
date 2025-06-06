@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="w-full max-w-screen-xl px-4 py-12 mx-auto mt-12 md:px-20">
         <x-users.header />
         @if ($errors->any())
@@ -11,7 +11,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('upload.image.analyze') }}" method="POST" enctype="multipart/form-data">
+        <form id="uploadForm" action="{{ route('upload.image.analyze') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="w-full p-6 bg-white border shadow-md rounded-xl">
                 <div id="drop-zone"
@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                             d="M3 6a2 2 0 012-2h5l2 2h9a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V6z" />
                     </svg>
-                    <p class="text-sm">Seret Gambar / Unggah Gambar</p>
+                    <p class="text-sm">Unggah Gambar Anda</p>
                     <input type="file" name="image" id="image-upload" accept="image/*" class="hidden" required>
                 </div>
 
@@ -29,7 +29,7 @@
                     <div class="flex items-center justify-center gap-4">
                         <img id="preview-img" src="" class="w-32 rounded shadow">
                         <div class="flex items-center justify-center">
-                            <p id="file-name" class="text-lg text-gray-700"></p>
+                            <p id="file-name" class="text-sm text-gray-700 md:text-lg"></p>
                             <button type="button" id="remove-image"
                                 class="text-xl font-bold text-red-500 text-end hover:text-red-700">&times;</button>
                         </div>
@@ -43,6 +43,14 @@
             </div>
         </form>
     </div>
+    <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-40">
+        <svg class="w-10 h-10 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2">
+            </circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+    </div>
     <x-users.step :activeStep="2" :totalSteps="3" />
     <script>
         const dropZone = document.getElementById('drop-zone');
@@ -51,8 +59,9 @@
         const previewImage = document.getElementById('preview-img');
         const fileNameText = document.getElementById('file-name');
         const removeButton = document.getElementById('remove-image');
-        const form = document.querySelector('form');
+        const form = document.getElementById('uploadForm');
         const submitButton = document.getElementById('prediksi-button');
+        const loadingOverlay = document.getElementById('loading-overlay');
 
         // Klik pada drop-zone membuka file picker
         dropZone.addEventListener('click', () => {
@@ -81,9 +90,11 @@
         });
 
         form.addEventListener('submit', () => {
+            // e.preventDefault();
             submitButton.disabled = true;
             submitButton.classList.add('opacity-60', 'cursor-not-allowed');
             submitButton.textContent = 'Memproses...';
+            loadingOverlay.classList.remove('hidden');
         });
     </script>
 </x-app-layout>

@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <div class="flex flex-col items-center justify-center w-full max-w-screen-xl px-6 py-6 bg-white">
         <x-users.header />
 

@@ -8,7 +8,9 @@ use App\Http\Controllers\UploadImageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('users.home');
+    return view('users.home', [
+        'title' => 'Home'
+    ]);
 })->name('home');
 
 // Halaman awal untuk memilih metode upload
@@ -24,7 +26,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/explore', function () {
-        return view('users.explore');
+        return view('users.explore', [
+            'title' => 'Explore'
+        ]);
     })->name('explore');
 
     Route::get('/library', [LibraryController::class, 'index'])->name('library');

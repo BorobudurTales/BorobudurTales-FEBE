@@ -22,11 +22,11 @@
                 <div class="relative ml-3" x-data="{ open: false }">
                     <div>
                         <button type="button" @click="open = !open"
-                            class="relative flex text-sm bg-gray-800 rounded-full focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+                            class="relative flex text-sm bg-gray-800 border-2 border-white rounded-full focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
                             id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
                             <img class="rounded-full size-8"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                src="{{ asset('img/17.svg') }}"
                                 alt="">
                         </button>
                     </div>

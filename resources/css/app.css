@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cursor {
+    display: inline-block;
+    color: #333;
+    margin-left: 2px;
+    animation: blink 1s step-start infinite;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
