@@ -7,7 +7,7 @@
             </h3>
             <div class="">
                 <div class="text-center">
-                    <img src="{{ asset('uploads/' . $uploadedImage) }}" alt="Relief"
+                    <img src="{{ asset('storage/uploads/' . $uploadedImage) }}" alt="Relief"
                         class="w-full mx-auto rounded-md md:w-96">
                     <div x-data="{ percent: 0 }" x-init="let target = {{ number_format($data['similarity'] * 100, 2) }};
                     let interval = setInterval(() => {

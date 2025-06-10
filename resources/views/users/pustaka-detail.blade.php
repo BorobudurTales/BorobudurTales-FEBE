@@ -22,9 +22,9 @@
                     <a href="{{ route('library') }}" class="px-6 py-2 text-sm border border-gray-600 rounded-full hover:bg-gray-100">
                         Kembali ke Pustaka
                     </a>
-                    <button class="px-6 py-2 text-sm text-white rounded-full bg-amber-600 hover:bg-amber-700">
+                    <a href="{{ route('upload') }}" class="px-6 py-2 text-sm text-white rounded-full bg-amber-600 hover:bg-amber-700">
                         Telusuri Visualisasinya
-                    </button>
+                    </a>
                 </div>
             </div>
 

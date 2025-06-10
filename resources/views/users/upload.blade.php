@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <div class="flex flex-col items-center justify-center w-full max-w-screen-xl px-6 py-6 bg-white">
+    <div class="flex flex-col items-center justify-center w-full max-w-screen-xl px-6 py-6 mx-auto bg-white">
         <x-users.header />
 
         <div class="w-full px-5 py-5 mx-auto mb-10 space-y-4 bg-white border shadow-lg rounded-xl">

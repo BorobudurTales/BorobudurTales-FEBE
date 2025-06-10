@@ -9,17 +9,17 @@
 
             <div class="mb-4">
                 <x-auth.input-label for="email" :value="__('Email')" class="text-gray-700" />
-                <x-auth.text-input id="email" name="email" type="email" :value="old('email')" required autofocus
+                <x-auth.text-input id="email" name="email" type="email" :value="old('email')" autofocus
                     autocomplete="username"
-                    class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                    class="block w-full mt-1 border {{ $errors->has('email') ? 'border-red-500' : 'border-gray-300' }} rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                 <x-auth.input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
             </div>
 
             <div class="mb-4">
                 <x-auth.input-label for="password" :value="__('Kata Sandi')" class="text-gray-700" />
                 <div class="relative">
-                    <x-auth.text-input id="password" name="password" type="password" required
-                        class="block w-full pr-10 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                    <x-auth.text-input id="password" name="password" type="password"
+                        class="block w-full pr-10 mt-1 border {{ $errors->has('password') ? 'border-red-500' : 'border-gray-300' }} rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
                     <button type="button" onclick="togglePassword('password', this)"
                         class="absolute right-3 top-3 text-gray-500 hover:text-[#C98300]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24"

@@ -77,6 +77,7 @@ class ApiAuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->assignRole('user');
         // Kirim email verifikasi
         event(new Registered($user)); // lebih baik daripada manual sendEmailVerificationNotification()
 
@@ -88,6 +89,7 @@ class ApiAuthController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'user' => $user,
+            'role' => $user->getRoleNames()->first(),
         ]);
     }
 

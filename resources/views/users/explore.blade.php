@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     <!-- Hero Image -->
-    <div class="">
-        <img src="{{ asset('images/hearder.svg') }}" alt="Borobudur" class="" />
+    <div class="flex items-center justify-center w-full h-auto">
+        <img src="{{ asset('images/hearder.svg') }}" loading="lazy" alt="Borobudur" class="object-contain h-auto max-w-full" />
     </div>
 
     <!-- Sejarah Singkat -->

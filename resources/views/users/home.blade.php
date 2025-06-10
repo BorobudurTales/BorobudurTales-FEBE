@@ -67,9 +67,9 @@
         <h2 class="text-[28px] font-bold font-['Inter'] mb-10">Team</h2>
 
         <div class="grid max-w-6xl grid-cols-2 px-6 mx-auto md:grid-cols-3 gap-y-12 gap-x-4">
-            @foreach ([['nama' => 'Reza Nagita Nurazizah', 'img' => 'sasa.png', 'role' => 'Machine Learning'], ['nama' => 'Muhammad Solihin', 'img' => 'solihin.png', 'role' => 'Machine Learning'], ['nama' => 'Andreas Adi Prasetyo', 'img' => 'andreas.png', 'role' => 'Machine Learning'], ['nama' => 'Siti Fatimah Nur Cahya', 'img' => 'fatimah.png', 'role' => 'FEBE'], ['nama' => 'Maya Putri Nur Fajri', 'img' => 'maya.png', 'role' => 'FEBE'], ['nama' => 'Firdy Dwi Aryani', 'img' => 'firdy.png', 'role' => 'FEBE']] as $member)
+            @foreach ([['nama' => 'Reza Nagita Nurazizah', 'img' => '3.svg', 'role' => 'Machine Learning'], ['nama' => 'Muhammad Solihin', 'img' => '2.svg', 'role' => 'Machine Learning'], ['nama' => 'Andreas Adi Prasetyo', 'img' => '1.svg', 'role' => 'Machine Learning'], ['nama' => 'Siti Fatimah Nur Cahya', 'img' => '4.svg', 'role' => 'FEBE'], ['nama' => 'Maya Putri Nur Fajri', 'img' => '5.svg', 'role' => 'FEBE'], ['nama' => 'Firdy Dwi Aryani', 'img' => '6.svg', 'role' => 'FEBE']] as $member)
                 <div class="flex flex-col items-center w-full">
-                    <img src="/img/{{ $member['img'] }}" alt="{{ $member['nama'] }}"
+                    <img src="/img/{{ $member['img'] }}" loading="lazy" alt="{{ $member['nama'] }}"
                         class="object-cover mb-3 transition-all border-2 border-white rounded-full shadow-md hover:rotate-3 hover:scale-110 w-44 h-44">
                     <p
                         class="text-sm font-semibold text-[#333] text-center leading-tight max-w-[160px] min-h-[24px]">
