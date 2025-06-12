@@ -5,8 +5,9 @@ Repositori ini merupakan
 ---
 
 ## Tampilan
-Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin. 
-1. **Tampilan User** berfungsi untuk memberikan pengalaman interaktif yang baik dan mudah digunakan untuk user (pengguna). Fitur-fitur pada tampilan user meliputi:<br>
+Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin.
+
+**1. Tampilan User** berfungsi untuk memberikan pengalaman interaktif yang baik dan mudah digunakan untuk user (pengguna). Fitur-fitur pada tampilan user meliputi:<br>
 
    **🏠 Beranda**<br>
    Menampilkan pengantar dan informasi singkat tentang website, tim pembuat website, serta ajakan untuk mulai menjelajah cerita relief.<br>
@@ -21,7 +22,7 @@ Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin.
    Fitur utama yang memungkinkan pengguna mengunggah atau memindai gambar relief. Kemudian siatem akan menampilkan jenis relief dan cerita yang terkandung di
    dalamnya secara otomatis.<br>
    
-2. **Tampilan Admin** berfungsi untuk mengelola data cerita, data pengguna, dan pemantauan aktivitas dalam sistem. Fitur- fitur pada tampilan admin meliputi:<br>
+**2. Tampilan Admin** berfungsi untuk mengelola data cerita, data pengguna, dan pemantauan aktivitas dalam sistem. Fitur- fitur pada tampilan admin meliputi:<br>
 
    **📊 Dashboard Admin**<br>
    Menampilkan statistik umum seperti jumlah pengguna, aktivitas unggahan, dan data relief yang tersedia.<br>
@@ -40,5 +41,13 @@ Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin.
    
 ---
 
-## Teknology & Library 
-
+## Teknologi & Library 
+| Teknologi/Library      | Fungsi                                                             |
+| ---------------------- | ------------------------------------------------------------------ |
+| **Laravel**            | Framework utama untuk backend, routing, dan logika aplikasi        |
+| **Tailwind CSS**       | Library CSS utility-first untuk styling antarmuka secara responsif |
+| **Laravel Breeze**     | Starter kit untuk fitur autentikasi dasar (login & register)       |
+| **Auth Sanctum**       | Autentikasi token berbasis API untuk keamanan akses pengguna       |
+| **MySQL**              | Database utama untuk menyimpan data pengguna, cerita, dan pustaka  |
+| **Figma**              | Mendesain UI/UX aplikasi sebelum pengembangan                      |
+| **Visual Studio Code** | Editor kode utama dalam proses pengembangan frontend dan backend   |
