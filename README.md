@@ -1,54 +1,44 @@
-# 📘 TUTORIAL CLONE PROJECT DARI GITHUB
+# BOROBUDURTALES - Front-End and Back-End
 
-Berikut adalah langkah-langkah untuk meng-clone dan menjalankan proyek Laravel ini:
-
----
-
-### 1. 📋 Salin Link Repository
-
-Buka halaman GitHub repository, lalu klik tombol **Code** dan salin URL-nya.
-
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/1.png)
-
----
-### 2. 📋 Paste di terminal 
-
-Buka terminal,  lalu paste link repository.
-
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/2.png)
+Repositori ini merupakan 
 
 ---
 
-### 3. 🧪 Buka project di visual studio code
+## Tampilan
+Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin. 
+1. **Tampilan User** berfungsi untuk memberikan pengalaman interaktif yang baik dan mudah digunakan untuk user (pengguna). Fitur-fitur pada tampilan user meliputi:<br>
 
+   **🏠 Beranda**<br>
+   Menampilkan pengantar dan informasi singkat tentang website, tim pembuat website, serta ajakan untuk mulai menjelajah cerita relief.<br>
+   
+   **🗺️ Eksplor**<br>
+   Halaman yang memuat sejarah singkat Candi Borobudur, struktur candi, dan makna filosofis dari relief-relief yang ada.<br>
+   
+   **📚 Pustaka**<br>
+   Menyajikan kumpulan cerita dari relief Candi Borobudur yang telah diklasifikasikan dan dijelaskan secara ringkas.<br>
+   
+   **📷 Unggah Gambar**<br>
+   Fitur utama yang memungkinkan pengguna mengunggah atau memindai gambar relief. Kemudian siatem akan menampilkan jenis relief dan cerita yang terkandung di
+   dalamnya secara otomatis.<br>
+   
+2. **Tampilan Admin** berfungsi untuk mengelola data cerita, data pengguna, dan pemantauan aktivitas dalam sistem. Fitur- fitur pada tampilan admin meliputi:<br>
+
+   **📊 Dashboard Admin**<br>
+   Menampilkan statistik umum seperti jumlah pengguna, aktivitas unggahan, dan data relief yang tersedia.<br>
+   
+   **📄 Riwayat Pengguna**<br>
+   Menampilkan riwayat unggahan gambar atau interaksi pengguna dengan sistem.<br>
+   
+   **👤 Daftar Pengguna**<br>
+   Menampilkan data pengguna yang telah terdaftar.<br>
+   
+   **📖 Data Cerita Relief**<br>
+   Menampilkan data-data cerita relief. Admin dapat menambah, memperbarui, atau menghapus data cerita dari relief-relief yang ada di dalam sistem.<br>
+   
+   **⚙️ Profil Admin**<br>
+   Menampilkan halaman pengaturan informasi akun admin.
+   
 ---
-### 4. 🧪 Lakukan perintah **npm install** 
 
-Buka terminal, lalu jalankan perintah berikut:
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/3.png)
+## Teknology & Library 
 
----
-### 5. 🧪 Lakukan perintah **composer install**
-
-jalankan perintah berikut:
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/4.png)
-
----
-### 6. 🧪 Lakukan perintah **php artisan migrate**
-
-setelah selesai jalankan perintah berikut:
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/5.png)
-
----
-### 7. 🧪 lakukan perintah **npm run dev**
-
-jalankan perintah berikut:
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/6.png)
-
----
-### 8. 🧪 Lakukan Perintah **php artisan serve**
-
-Buka terminal baru, lalu jalankan perintah berikut:
-![Salin Link](https://github.com/Mayaputri04/capstone/blob/master/public/img/readme/7.png)
-
----
