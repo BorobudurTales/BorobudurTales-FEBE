@@ -1,5 +1,3 @@
-okeh akusudah selesai ini finalnya, sekaranmg buat push tadi gimana buat nyelesain konflik, 
-
 # 🏛️ BOROBUDURTALES – Front-End & Back-End
 
 Repositori ini berisi kode sumber **frontend dan backend** dari BorobudurTales, sebuah platform web interaktif yang bertujuan menghidupkan kembali cerita relief Candi Borobudur melalui teknologi digital. Proyek ini merupakan bagian dari capstone project tim CC25-CF247 dalam program Coding Camp 2025.
