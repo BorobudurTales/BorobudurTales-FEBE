@@ -70,8 +70,6 @@ Digunakan untuk mengelola data cerita, data pengguna, serta memantau seluruh akt
 
 #### 📖 Data Cerita Relief
 - Mengelola data cerita relief:
-  - Tambah cerita baru.
-  - Edit atau perbarui cerita yang ada.
   - Menghapus cerita yang tidak relevan.
   - Melihat detail isi cerita lengkap dengan gambar relief dan referensi pendukung.
 
@@ -79,7 +77,6 @@ Digunakan untuk mengelola data cerita, data pengguna, serta memantau seluruh akt
 - Pengaturan akun admin:
   - Memperbarui informasi diri.
   - Mengubah password.
-  - Mengatur preferensi tampilan akun.
 
 ---
 ## 🛠️ Teknologi & Library 
