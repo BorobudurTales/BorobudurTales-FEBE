@@ -1,20 +1,16 @@
-# BOROBUDURTALES - Front-End and Back-End
+okeh akusudah selesai ini finalnya, sekaranmg buat push tadi gimana buat nyelesain konflik, 
 
- **Borobudur Tales** adalah aplikasi edukasi interaktif berbasis web yang menghidupkan kembali kisah-kisah relief Candi Borobudur dalam genggaman Anda!  
-Dengan teknologi modern, pengguna dapat menjelajahi relief, membaca cerita, dan bahkan mengunggah gambar relief untuk dikenali secara otomatis.  
-Admin dapat memantau dan mengelola seluruh data serta aktivitas pengguna dengan mudah.
+# 🏛️ BOROBUDURTALES – Front-End & Back-End
 
+Repositori ini berisi kode sumber **frontend dan backend** dari BorobudurTales, sebuah platform web interaktif yang bertujuan menghidupkan kembali cerita relief Candi Borobudur melalui teknologi digital. Proyek ini merupakan bagian dari capstone project tim CC25-CF247 dalam program Coding Camp 2025.
 
 ---
 
-## 🖥️ Tampilan
-Terdapat 2 tampilan dalam website ini, yaitu tampilan user dan tampilan admin.
-
 ## 🖥️ Tampilan Aplikasi
 
-Aplikasi **Borobudur Tales** memiliki dua tampilan utama:  
-**🔸 Tampilan User** (untuk pengguna umum)  
-**🔸 Tampilan Admin** (untuk pengelola sistem)
+Aplikasi ini memiliki dua peran utama:  
+**🔸 Tampilan User** – untuk pengguna umum  
+**🔸 Tampilan Admin** – untuk pengelola sistem
 
 ---
 
@@ -86,29 +82,62 @@ Digunakan untuk mengelola data cerita, data pengguna, serta memantau seluruh akt
   - Memperbarui informasi diri.
   - Mengubah password.
   - Mengatur preferensi tampilan akun.
-   
+
+---
+## 🛠️ Teknologi & Library 
+
+| Teknologi/Library      | Fungsi                                                                 |
+|------------------------|------------------------------------------------------------------------|
+| **Laravel**            | Framework utama untuk mengembangkan sisi backend, termasuk routing, kontrol akses, dan pengelolaan data aplikasi. |
+| **Vite**               | Build tools modern berbasis ES Module yang digunakan untuk melakukan bundling dan penyajian asset frontend dengan cepat dan efisien. |
+| **Tailwind CSS**       | Library CSS utility-first yang digunakan untuk membangun antarmuka pengguna yang responsif dan konsisten secara komponen. |
+| **MySQL**              | Sistem manajemen basis data relasional yang digunakan sebagai penyimpanan utama untuk data pengguna, cerita, pustaka, dan aktivitas lainnya. |
+| **Laravel Breeze**     | Starter kit resmi dari Laravel untuk menerapkan fitur autentikasi dasar seperti registrasi, login, dan proteksi route dengan struktur yang sederhana. |
+| **Laravel Sanctum**    | Sistem autentikasi berbasis token yang digunakan untuk mengamankan akses API antar klien dan server, termasuk manajemen sesi login pengguna. |
+| **REST API**           | Gaya komunikasi antara frontend dan backend yang memungkinkan pertukaran data dalam format JSON melalui endpoint HTTP yang terstruktur. |
+| **Figma**              | Platform desain kolaboratif yang digunakan untuk membuat wireframe, prototype, dan UI final dari aplikasi sebelum proses pengembangan dimulai. |
+| **Visual Studio Code** | Editor kode sumber utama yang digunakan dalam proses pengembangan frontend dan backend, dilengkapi dengan berbagai ekstensi produktivitas. |
+
 ---
 
-## 🛠️ Teknologi & Library 
-| Teknologi/Library      | Fungsi                                                             |
-| ---------------------- | ------------------------------------------------------------------ |
-| **Laravel**            | Framework utama untuk backend, routing, dan logika aplikasi        |
-| **Tailwind CSS**       | Library CSS utility-first untuk styling antarmuka secara responsif |
-| **Laravel Breeze**     | Starter kit untuk fitur autentikasi dasar (login & register)       |
-| **Auth Sanctum**       | Autentikasi token berbasis API untuk keamanan akses pengguna       |
-| **RestAPI**            | Menghubungkan antarmuka pengguna dengan server                     |
-| **MySQL**              | Database utama untuk menyimpan data pengguna, cerita, dan pustaka  |
-| **Figma**              | Mendesain UI/UX aplikasi sebelum pengembangan                      |
-| **Visual Studio Code** | Editor kode utama dalam proses pengembangan frontend dan backend   |
+## ⚙️ Instalasi dan Setup Lokal
+
+### 📋 Prasyarat
+- PHP ≥ 8.1
+- Composer
+- Node.js & NPM
+- MySQL
+
+### 🔧 Langkah Instalasi
+```bash
+git clone https://github.com/BorobudurTales/BorobudurTales-FEBE.git
+cd BorobudurTales-FEBE
+
+cp .env.example .env
+composer install
+npm install && npm run dev
+php artisan key:generate
+php artisan migrate --seed
+
+php artisan serve
+```
 
 ---
 
 ## 🎨 Mockup Desain
-📱 **User**  
 
+📱 **User**  
 ![user](https://github.com/user-attachments/assets/eed426d4-e00d-4e8d-aba3-bd0872f80cf1)
 
-🎯 **Admin** 
-
+🎯 **Admin**  
 ![admin](https://github.com/user-attachments/assets/1a6cf49d-ec56-4d32-acdd-6b848640bf17)
 
+🔗 **Lihat Desain Lengkap di Figma**: [Figma Capstone Project](https://www.figma.com/design/IguXXq0naOjKpYCgxCDCdY/Capstone-Project?node-id=1-4&p=f)
+
+---
+
+## 🌐 URL Aplikasi & Dokumentasi API
+
+- 🔗 **Akses Aplikasi Web**: [https://capstone.andreasadi.my.id](https://capstone.andreasadi.my.id)
+
+- 📘 **Dokumentasi API**: [https://capstone.andreasadi.my.id/api/documentation](https://capstone.andreasadi.my.id/api/documentation)
